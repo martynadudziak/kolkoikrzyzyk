@@ -40,9 +40,10 @@ string wypiszczypełnoletni(int wiek)
 
 void narysujtablice()
 {
-    cout << "   |   |   " << endl << "   |   |   " << endl << "___|___|___" << endl;
-    cout << "   |   |   " << endl << "   |   |   " << endl << "___|___|___" << endl;
-    cout << "   |   |   " << endl << "   |   |   " << endl << "   |   |   " << endl;
+    system("cls");
+    cout << "   |   |   " << endl << " " << tablica[1] << " | " << tablica[2] << " | " << tablica[3] << " " << endl << "___|___|___" << endl;
+    cout << "   |   |   " << endl << " " << tablica[4] << " | " << tablica[5] << " | " << tablica[6] << endl << "___|___|___" << endl;
+    cout << "   |   |   " << endl << " " << tablica[7] << " | " << tablica[8] << " | " << tablica[9] << endl << "   |   |   " << endl;
 }
 
 bool czywygrał()
@@ -87,14 +88,14 @@ int main()
 {   
     int liczbaoperacji = 0;
 
-    while (liczbaoperacji!=3)
+    /*while (liczbaoperacji!=9)
     {
         int numerpola;
         char x;
         cin >> numerpola >> x;
         tablica[numerpola] = x;
         liczbaoperacji++;
-    }
+    }*/
 
     narysujtablice();
 
