@@ -86,27 +86,58 @@ bool czywygrał()
 
 int main()
 {   
-    int liczbaoperacji = 0;
+    int gracz = 1;
+    int liczbaoperacji = 1;
+    char znak;
+    int numerpola;
+    bool wygrana = false;
 
-    /*while (liczbaoperacji!=9)
+    while (liczbaoperacji!=10)
     {
-        int numerpola;
-        char x;
-        cin >> numerpola >> x;
-        tablica[numerpola] = x;
+        narysujtablice();
+        if (liczbaoperacji % 2 == 0)
+        {
+            gracz = 2;
+        }
+
+        else
+        {
+            gracz = 1;
+        }
+        znak = (gracz == 1) ? 'o' : 'x';
+
+        cout << "ruch gracza " << gracz << endl;
+
+        while (true)
+        {
+            cin >> numerpola;
+
+            if (numerpola <= 9 && numerpola > 0)
+            {
+                if (tablica[numerpola] == 'x' || tablica[numerpola] == 'o')
+                {
+                    cout << "wybierz inne pole" << endl;
+                }
+                else break;
+            }
+            else cout << "wpisz cyfre od 1 do 9"<<endl;
+        }
+
+        tablica[numerpola] = znak;
+
+        wygrana = czywygrał();
+
+        if (wygrana == true)
+        {
+            narysujtablice();
+            cout << "wygrana gracza " << gracz;
+            return 0;
+        }
+
         liczbaoperacji++;
-    }*/
-
-    narysujtablice();
-
-    bool wygrana = czywygrał();
-
-    if (wygrana == true)
-    {
-        cout << "wygrana";
-        return 0;
     }
-    cout << "przegrana";
+
+    cout << "remis";
 
     /*int wiek;
     cin >> wiek;
