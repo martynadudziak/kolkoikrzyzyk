@@ -3,6 +3,7 @@
 using namespace std;
 
 char tablica[10] = { '0','1','2','3','4','5','6','7','8','9' };
+int numerpola;
 
 int dodawanie(int n, int m)
 {
@@ -83,14 +84,49 @@ bool czywygrał()
     else return false;
 
 }
+bool poprawnoscwpisanegoruchu()
+{
+    if (numerpola <= 9 && numerpola > 0)
+    {
+        if (tablica[numerpola] == 'x' || tablica[numerpola] == 'o')
+        {
+            cout << "wybierz inne pole" << endl;
+        }
+        else 
+            return true;
+    }
+    else cout << "wpisz cyfre od 1 do 9" << endl;
+    return false;
+}
 
 int main()
 {   
     int gracz = 1;
     int liczbaoperacji = 1;
     char znak;
-    int numerpola;
+    
     bool wygrana = false;
+    bool czyJestKomputer = NULL;
+    int liczbaGraczy;
+
+    cout << "wybierz ilość graczy (1 albo 2)" << endl;
+
+    while (true)
+    {
+        cin >> liczbaGraczy;
+        if (liczbaGraczy == 1)
+        {
+            czyJestKomputer = true;
+            break;
+        }
+        else if (liczbaGraczy == 2)
+        {
+            czyJestKomputer = false;
+            break;
+        }
+        else
+            cout << "wybierz poprawną ilość graczy" << endl;
+    }
 
     while (liczbaoperacji!=10)
     {
@@ -108,19 +144,25 @@ int main()
 
         cout << "ruch gracza " << gracz << endl;
 
-        while (true)
+        while (true && (czyJestKomputer==false || gracz==1))
         {
-            cin >> numerpola;
-
-            if (numerpola <= 9 && numerpola > 0)
+            while (!(cin >> numerpola))
             {
-                if (tablica[numerpola] == 'x' || tablica[numerpola] == 'o')
-                {
-                    cout << "wybierz inne pole" << endl;
-                }
-                else break;
+                cout << "wpisz cyfre od 1 do 9" << endl;
+                cin.clear();
+                cin.ignore(100, '\n');
             }
-            else cout << "wpisz cyfre od 1 do 9"<<endl;
+            //cin >> numerpola;
+
+            if (poprawnoscwpisanegoruchu())
+                break;
+        }
+
+        while (true && czyJestKomputer == true && gracz==2)
+        {
+            numerpola = rand() % 9 + 1;
+            if (poprawnoscwpisanegoruchu)
+                break;
         }
 
         tablica[numerpola] = znak;
