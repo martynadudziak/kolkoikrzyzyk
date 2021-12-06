@@ -127,7 +127,7 @@ int main()
         while (true && czyJestKomputer == true && gracz==2)
         {
             numerpola = rand() % 9 + 1;
-            if (poprawnoscwpisanegoruchu)
+            if (poprawnoscwpisanegoruchu) //Zle uzycie funkcji
                 break;
         }
 
